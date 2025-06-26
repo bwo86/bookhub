@@ -66,7 +66,7 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "책 삭제", description = "책 ID를 기반으로 책을 삭제합니다.")
-    public ResponseEntity<String> deleteBook(@PathVariable String id) {
+    public ResponseEntity<String> deleteBook(@PathVariable long id) {
         boolean success = bookService.deleteBook(id);
         if (success) {
             return ResponseEntity.ok("책이 삭제되었습니다.");

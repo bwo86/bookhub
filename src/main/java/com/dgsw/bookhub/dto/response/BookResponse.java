@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class BookResponse {
-    private String id;
+    private long id;
     private String title;
     private String author;
     private boolean loaned;

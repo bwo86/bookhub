@@ -18,15 +18,10 @@ public class BookService {
     private final BookRepository bookRepository;
 
     public boolean addBook(BookCreateRequest request) {
-        if (bookRepository.existsById(request.getId())) {
-            return false;
-        }
-
-        BookEntity book = new BookEntity();
-        book.setId(request.getId());
-        book.setTitle(request.getTitle());
-        book.setAuthor(request.getAuthor());
-        book.setLoaned(false);
+        BookEntity book = BookEntity.builder()
+                .title(request.getTitle())
+                .author(request.getAuthor())
+                .loaned(false).build();
         bookRepository.save(book);
         return true;
     }
@@ -76,7 +71,7 @@ public class BookService {
                 .toList();
     }
 
-    public boolean deleteBook(String id) {
+    public boolean deleteBook(long id) {
         if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
             return true;
