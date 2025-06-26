@@ -11,10 +11,8 @@ import lombok.Setter;
 @Table(name = "books")
 public class BookEntity {
     @Id
-    private String bookId;
+    private String id;
     private String title;
     private String author;
-    private String publisher;
     private boolean loaned;
-    private String location;
 }
